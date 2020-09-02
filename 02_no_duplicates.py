@@ -5,21 +5,23 @@ When the publish function is called, print an error message if the book given ha
 the books list.
 """
 
+class Author:
+    def __init__(self, name):
+        self.name = name
+        self.books = []
+
+    def publish(self, title):
+        if title in self.books:
+            print(f'You have already entered "{title}"!')
+        else:
+            self.books.append(title)
+
+    def __str__(self):
+        titles = '", "'.join(self.books) or "No published books"
+        return f'''{self.name}, Books: "{titles}"'''
+
+
 def main():
-
-    class Author:
-        def __init__(self, name):
-            self.name = name
-            self.books = []
-
-        def publish(self, title):
-            if title in self.books:
-                print(f'You have already entered "{title}"!')
-            else:
-                self.books.append(title)
-
-        def __str__(self):
-            print(f'''{self.name}: "{'", "'.join(self.books)}"''')
 
     #Test Authors
     a1 = Author("Dr. Seuss")
@@ -27,20 +29,23 @@ def main():
     a1.publish('The Tooth Book')
     a1.publish('The Tooth Book')
     a1.publish('What Was I Scared Of?')
-    a1.publish('Oh, the Places You\'ll Go! ')
-    a1.__str__()
+    a1.publish('Oh, the Places You\'ll Go!')
+    print(a1)
 
     a2 = Author("Neil Gaiman")
     a2.publish('Coraline')
     a2.publish('Norse Mythology')
     a2.publish('The Sleeper and the Spindle')
-    a2.__str__()
+    print(a2)
 
     a3 = Author("Yaa Gyasi")
     a3.publish('Transcendent Kingdom')
     a3.publish('Homegoing')
     a3.publish('Homegoing')
-    a3.__str__()
+    print(a3)
+
+    a4 = Author("Nate G")
+    print(a4)
 
 if __name__ == "__main__":
     main()
